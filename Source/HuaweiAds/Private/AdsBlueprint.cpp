@@ -11,7 +11,7 @@ FOnBannerAdClicked UHuaweiAdsBlueprint::_onBannerAdClicked;
 FOnBannerAdImpression UHuaweiAdsBlueprint::_onBannerAdImpression;
 void UHuaweiAdsBlueprint::loadBannerAd(
 	const FString adId,
-	const int position,
+	const UBannerPosition position,
 	const UBannerSize size,
 	const FOnBannerAdClosed &onBannerAdClosed,
 	const FOnBannerAdFailed &onBannerAdFailed,
@@ -21,7 +21,7 @@ void UHuaweiAdsBlueprint::loadBannerAd(
 	const FOnBannerAdClicked &onBannerAdClicked,
 	const FOnBannerAdImpression &onBannerAdImpression)
 {
-	Ads::loadBannerAd(adId, position, UEnum::GetValueAsString(size));
+	Ads::loadBannerAd(adId, ((uint8) position) - 1, UEnum::GetValueAsString(size));
 	UHuaweiAdsBlueprint::_onBannerAdClosed = onBannerAdClosed;
 	UHuaweiAdsBlueprint::_onBannerAdFailed = onBannerAdFailed;
 	UHuaweiAdsBlueprint::_onBannerAdLeftApp = onBannerAdLeftApp;

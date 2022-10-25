@@ -6,6 +6,18 @@
 
 namespace huawei
 {
+    enum BannerPosition
+    {
+        POSITION_CUSTOM = -1,
+        POSITION_TOP = 0,
+        POSITION_BOTTOM = 1,
+        POSITION_TOP_LEFT = 2,
+        POSITION_TOP_RIGHT = 3,
+        POSITION_BOTTOM_LEFT = 4,
+        POSITION_BOTTOM_RIGHT = 5,
+        POSITION_CENTER = 6
+    };
+
     enum BannerSize
     {
         USER_DEFINED,
@@ -19,8 +31,8 @@ namespace huawei
         BANNER_SIZE_160_600,
         BANNER_SIZE_360_57,
         BANNER_SIZE_360_144
-    };   
-    
+    };
+
     class AdsListener
     {
     public:
@@ -49,8 +61,8 @@ namespace huawei
     class Ads
     {
     public:
-        static constexpr const char* bannerSizeToString(BannerSize size);
-        static void loadBannerAd(FString adId, int position, BannerSize size);
+        static constexpr const char *bannerSizeToString(BannerSize size);
+        static void loadBannerAd(FString adId, BannerPosition position, BannerSize size);
         static void loadBannerAd(FString adId, int position, FString size);
         static void showBannerAd();
         static void hideBannerAd();

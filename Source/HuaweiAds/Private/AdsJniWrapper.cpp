@@ -28,20 +28,6 @@ else \
 #define DECLARE_JAVA_METHOD(name) \
 static jmethodID name = NULL;
 
-inline string jstring2string(JNIEnv *env, jstring jstr)
-{
-    if (jstr == nullptr || !env)
-    {
-        return "";
-    }
-
-    const char *chars = env->GetStringUTFChars(jstr, nullptr);
-    string ret(chars);
-    env->ReleaseStringUTFChars(jstr, chars);
-
-    return ret;
-}
-
 inline FString jstring2FString(JNIEnv *env, jstring jstr)
 {
     if (jstr == nullptr || !env)

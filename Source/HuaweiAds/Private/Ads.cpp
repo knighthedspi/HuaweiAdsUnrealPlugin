@@ -25,9 +25,9 @@ namespace huawei
         }        
     }
 
-    void Ads::loadBannerAd(FString adId, int position, BannerSize size)
+    void Ads::loadBannerAd(FString adId, BannerPosition position, BannerSize size)
     {
-        AdsJniWrapper::getInstance()->loadBannerAd(TCHAR_TO_UTF8(*adId), position, bannerSizeToString(size));
+        AdsJniWrapper::getInstance()->loadBannerAd(TCHAR_TO_UTF8(*adId), static_cast<int>(position), bannerSizeToString(size));
     }
 
     void Ads::loadBannerAd(FString adId, int position, FString size)

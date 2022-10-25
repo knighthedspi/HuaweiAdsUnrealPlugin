@@ -31,6 +31,19 @@ DECLARE_DYNAMIC_DELEGATE(FOnRewardAdOpened);
 DECLARE_DYNAMIC_DELEGATE_TwoParams(FOnRewarded, FString, type, int, amount);
 
 UENUM(BlueprintType)
+enum class UBannerPosition : uint8
+{
+    POSITION_CUSTOM = 0 UMETA(DisplayName="POSITION_CUSTOM"),
+    POSITION_TOP = 1 UMETA(DisplayName="POSITION_TOP"),
+    POSITION_BOTTOM = 2 UMETA(DisplayName="POSITION_BOTTOM"),
+    POSITION_TOP_LEFT = 3 UMETA(DisplayName="POSITION_TOP_LEFT"),
+    POSITION_TOP_RIGHT = 4 UMETA(DisplayName="POSITION_TOP_RIGHT"),
+    POSITION_BOTTOM_LEFT = 5 UMETA(DisplayName="POSITION_BOTTOM_LEFT"),
+    POSITION_BOTTOM_RIGHT = 6 UMETA(DisplayName="POSITION_BOTTOM_RIGHT"),
+    POSITION_CENTER = 7 UMETA(DisplayName="POSITION_CENTER")
+};
+
+UENUM(BlueprintType)
 enum class UBannerSize : uint8
 {
     USER_DEFINED  UMETA(DisplayName="USER_DEFINED"),
@@ -80,7 +93,7 @@ class HUAWEIADS_API UHuaweiAdsBlueprint : public UBlueprintFunctionLibrary, publ
     UFUNCTION(BlueprintCallable, Category = "HuaweiAds Category")
     static void loadBannerAd(
         const FString adId,
-        const int position,
+        const UBannerPosition position,
         const UBannerSize size,
         const FOnBannerAdClosed &onBannerAdClosed,
         const FOnBannerAdFailed &onBannerAdFailed,
