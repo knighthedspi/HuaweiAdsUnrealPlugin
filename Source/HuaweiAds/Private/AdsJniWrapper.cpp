@@ -209,7 +209,9 @@ namespace huawei
     {
         if (JNIEnv *Env = FAndroidApplication::GetJavaEnv())
         {
-            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadBannerAd, adId, position, size);
+            jstring adIdJstr = Env->NewStringUTF(adId.c_str());
+            jstring sizeJstr = Env->NewStringUTF(size.c_str());
+            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadBannerAd, adIdJstr, position, sizeJstr);
             UE_LOG(LogAndroid, Warning, TEXT("I found the java method HuaweiAds_LoadBannerAd\n"));
         }
         else
@@ -261,7 +263,8 @@ namespace huawei
     {
         if (JNIEnv *Env = FAndroidApplication::GetJavaEnv())
         {
-            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadInterstitialAd, adId);
+            jstring adIdJstr = Env->NewStringUTF(adId.c_str());
+            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadInterstitialAd, adIdJstr);
             UE_LOG(LogAndroid, Warning, TEXT("I found the java method HuaweiAds_LoadInterstitialAd\n"));
         }
         else
@@ -287,7 +290,8 @@ namespace huawei
     {
         if (JNIEnv *Env = FAndroidApplication::GetJavaEnv())
         {
-            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadRewardAd, adId);
+            jstring adIdJstr = Env->NewStringUTF(adId.c_str());
+            FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HuaweiAds_LoadRewardAd, adIdJstr);
             UE_LOG(LogAndroid, Warning, TEXT("I found the java method HuaweiAds_LoadRewardAd\n"));
         }
         else
@@ -488,7 +492,7 @@ namespace huawei
 
     void AdsJniWrapper::onRewardAdFailedToShow(int errorCode)
     {
-        UE_LOG(HuaweiAds_Native, Log, TEXT("Failed to show reward ad with error code: %d", errorCode));
+        UE_LOG(HuaweiAds_Native, Log, TEXT("Failed to show reward ad with error code: %d"), errorCode);
         if (_listener != nullptr)
         {
             _listener->onRewardAdFailedToShow(errorCode);
