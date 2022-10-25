@@ -1,5 +1,7 @@
 package com.huawei.adplugin;
 
+import android.view.Gravity;
+
 public class Const {
     public static final class BannerAdSize {
         public static final String USER_DEFINED = "USER_DEFINED";

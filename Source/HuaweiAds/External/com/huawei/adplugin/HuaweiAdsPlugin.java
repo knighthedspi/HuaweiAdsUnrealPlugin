@@ -1,6 +1,7 @@
 package com.huawei.adplugin;
 
-import com.huawei.adplugin.*;
+import com.huawei.adplugin.adproxy.*;
+import com.huawei.adplugin.adlistener.*;
 import com.huawei.hms.ads.*;
 
 import android.app.Activity;
@@ -19,7 +20,7 @@ public class HuaweiAdsPlugin {
         }
     }
 
-    public static void loadBannerAd(String adId, int position, String size, IAdStatusListener adStatusListener) {
+    public static void loadBannerAd(String adId, int position, String size, final IAdStatusListener adStatusListener) {
         if (mActivity == null) {
             return;
         }
@@ -101,7 +102,7 @@ public class HuaweiAdsPlugin {
         }
     }
 
-    public static void loadInterstitialAd(String adId, IAdStatusListener adStatusListener) {
+    public static void loadInterstitialAd(String adId, final IAdStatusListener adStatusListener) {
         if (mActivity == null) {
             return;
         }
@@ -170,12 +171,12 @@ public class HuaweiAdsPlugin {
         }
     }
 
-    public static void loadRewardAd(String adId, IRewardAdLoadListener rewardLoadListener, IRewardAdStatusListener rewardStatusListener) {
+    public static void loadRewardAd(String adId, final IRewardAdLoadListener rewardLoadListener, final IRewardAdStatusListener rewardStatusListener) {
         if (mActivity == null) {
             return;
         }
         if (rewardAdProxy == null) {
-            rewardAdProxy = new RewardAdProxy(adId, mActivity);
+            rewardAdProxy = new RewardAdProxy(mActivity, adId);
         }
         AdParam adParam = new AdParam.Builder().build();
         rewardAdProxy.loadAd(adParam, new IRewardAdLoadListener() {

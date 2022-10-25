@@ -78,6 +78,7 @@
         <insert>
             <![CDATA[
                 import com.huawei.adplugin.*;
+                import com.huawei.adplugin.adlistener.*;
                 import com.huawei.hms.ads.*;
             ]]>
         </insert>

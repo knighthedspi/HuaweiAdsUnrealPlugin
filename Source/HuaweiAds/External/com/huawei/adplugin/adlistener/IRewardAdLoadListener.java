@@ -1,4 +1,3 @@
-
 package com.huawei.adplugin.adlistener;
 
 public interface IRewardAdLoadListener {

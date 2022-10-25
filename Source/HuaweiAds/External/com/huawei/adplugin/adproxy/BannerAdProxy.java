@@ -16,8 +16,7 @@ import com.huawei.hms.ads.AdListener;
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.BannerAdSize;
 import com.huawei.hms.ads.banner.BannerView;
-import com.huawei.adplugin.Const.BannerAdPositionCode;
-import com.huawei.adplugin.Const.BannerAdSize;
+import com.huawei.adplugin.Const;
 import com.huawei.adplugin.adlistener.IAdStatusListener;
 
 public class BannerAdProxy extends AdListener {
@@ -33,9 +32,9 @@ public class BannerAdProxy extends AdListener {
 
     private String mAdId;
 
-    private String mAdSizeType = BannerAdSize.USER_DEFINED;
+    private String mAdSizeType = Const.BannerAdSize.USER_DEFINED;
 
-    private int mPositionCode = BannerAdPositionCode.POSITION_TOP;
+    private int mPositionCode = Const.BannerAdPositionCode.POSITION_TOP;
 
     private int mHorizontalOffset = 0;
 
@@ -131,7 +130,7 @@ public class BannerAdProxy extends AdListener {
     }
 
     public void setBannerAdPosition(final int positionX, final int positionY) {
-        mPositionCode = BannerAdPositionCode.POSITION_CUSTOM;
+        mPositionCode = Const.BannerAdPositionCode.POSITION_CUSTOM;
         mHorizontalOffset = positionX;
         mVerticalOffset = positionY;
         updatePosition();
@@ -246,37 +245,37 @@ public class BannerAdProxy extends AdListener {
     private BannerAdSize getTargetBannerAdSize(String adSize) {
         BannerAdSize bannerAdSize = BannerAdSize.BANNER_SIZE_INVALID;
         switch (adSize) {
-            case BannerAdSize.USER_DEFINED:
+            case Const.BannerAdSize.USER_DEFINED:
                 bannerAdSize = getUserDefinedBannerSize();
                 break;
-            case BannerAdSize.BANNER_SIZE_320_50:
+            case Const.BannerAdSize.BANNER_SIZE_320_50:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_320_50;
                 break;
-            case BannerAdSize.BANNER_SIZE_320_100:
+            case Const.BannerAdSize.BANNER_SIZE_320_100:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_320_100;
                 break;
-            case BannerAdSize.BANNER_SIZE_468_60:
+            case Const.BannerAdSize.BANNER_SIZE_468_60:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_468_60;
                 break;
-            case BannerAdSize.BANNER_SIZE_DYNAMIC:
+            case Const.BannerAdSize.BANNER_SIZE_DYNAMIC:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_DYNAMIC;
                 break;
-            case BannerAdSize.BANNER_SIZE_728_90:
+            case Const.BannerAdSize.BANNER_SIZE_728_90:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_728_90;
                 break;
-            case BannerAdSize.BANNER_SIZE_300_250:
+            case Const.BannerAdSize.BANNER_SIZE_300_250:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_300_250;
                 break;
-            case BannerAdSize.BANNER_SIZE_SMART:
+            case Const.BannerAdSize.BANNER_SIZE_SMART:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_SMART;
                 break;
-            case BannerAdSize.BANNER_SIZE_160_600:
+            case Const.BannerAdSize.BANNER_SIZE_160_600:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_160_600;
                 break;
-            case BannerAdSize.BANNER_SIZE_360_57:
+            case Const.BannerAdSize.BANNER_SIZE_360_57:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_360_57;
                 break;
-            case BannerAdSize.BANNER_SIZE_360_144:
+            case Const.BannerAdSize.BANNER_SIZE_360_144:
                 bannerAdSize = BannerAdSize.BANNER_SIZE_360_144;
                 break;
             default:
@@ -292,10 +291,10 @@ public class BannerAdProxy extends AdListener {
     private FrameLayout.LayoutParams getBannerViewLayoutParams() {
         final FrameLayout.LayoutParams adParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT,
                 FrameLayout.LayoutParams.WRAP_CONTENT);
-        adParams.gravity = BannerAdPositionCode.getLayoutGravityForPositionCode(mPositionCode);
+        adParams.gravity = Const.BannerAdPositionCode.getLayoutGravityForPositionCode(mPositionCode);
         int safeInsetLeft = 0;
         int safeInsetTop = 0;
-        if (mPositionCode == BannerAdPositionCode.POSITION_CUSTOM) {
+        if (mPositionCode == Const.BannerAdPositionCode.POSITION_CUSTOM) {
             int leftOffset = (int) convertDpToPx(mHorizontalOffset);
             if (leftOffset < safeInsetLeft) {
                 leftOffset = safeInsetLeft;
@@ -308,9 +307,9 @@ public class BannerAdProxy extends AdListener {
             adParams.topMargin = topOffset;
         } else {
             adParams.leftMargin = safeInsetLeft;
-            if (mPositionCode == BannerAdPositionCode.POSITION_TOP
-                    || mPositionCode == BannerAdPositionCode.POSITION_TOP_LEFT
-                    || mPositionCode == BannerAdPositionCode.POSITION_TOP_RIGHT) {
+            if (mPositionCode == Const.BannerAdPositionCode.POSITION_TOP
+                    || mPositionCode == Const.BannerAdPositionCode.POSITION_TOP_LEFT
+                    || mPositionCode == Const.BannerAdPositionCode.POSITION_TOP_RIGHT) {
                 adParams.topMargin = safeInsetTop;
             }
         }
