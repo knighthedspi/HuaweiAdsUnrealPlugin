@@ -133,7 +133,7 @@ The below functions are supported with Blueprint
 - `loadInterstitialAd`
 - `showInterstitialAd`
 - `loadRewardAd`
-You can refer to the [Blueprint sample](Blueprint/HuaweiIap.uasset).
+You can refer to the [Blueprint sample](Blueprint/HuaweiAdsBlueprint.uasset).
 ![Screenshots/blueprint.png](Screenshots/blueprint.png)
 
 
