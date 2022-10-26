@@ -1,0 +1,21 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "HuaweiAds",
+  "Description": "Ads plugin for Unreal Game Engine to Huawei App Gallery",
+  "Category": "Service",
+  "CreatedBy": "Huawei Japan DTSE",
+  "CreatedByURL": "",
+  "DocsURL": "",
+  "MarketplaceURL": "",
+  "EnabledByDefault": true,
+  "SupportURL": "",
+  "Modules": [
+    {
+      "Name": "HuaweiAds",
+      "Type": "Runtime",
+      "LoadingPhase": "PreLoadingScreen"
+    }
+  ]
+}
