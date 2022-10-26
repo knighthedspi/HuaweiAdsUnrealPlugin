@@ -4,6 +4,7 @@ package com.huawei.adplugin.adproxy;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.huawei.hms.ads.AdParam;
 import com.huawei.hms.ads.reward.Reward;
@@ -27,6 +28,8 @@ public class RewardAdProxy {
 
     private Handler mMainThreadHandler = new Handler(Looper.getMainLooper());
 
+    private static final String TAG = "RewardAdProxy";
+
     public RewardAdProxy(Activity activity, String adId) {
         mActivity = activity;
         mAdId = adId;
@@ -39,6 +42,7 @@ public class RewardAdProxy {
             mRewardAd.loadAd(adRequest, new RewardAdLoadListener() {
                 @Override
                 public void onRewardAdFailedToLoad(final int errorCode) {
+                    Log.i(TAG, "Failed to load reward ad with error code " + errorCode);
                     super.onRewardAdFailedToLoad(errorCode);
                     mMainThreadHandler.post(new Runnable() {
                         @Override
@@ -52,6 +56,7 @@ public class RewardAdProxy {
 
                 @Override
                 public void onRewardedLoaded() {
+                    Log.i(TAG, "Loaded reward ad");
                     super.onRewardedLoaded();
                     mMainThreadHandler.post(new Runnable() {
                         @Override
@@ -75,6 +80,7 @@ public class RewardAdProxy {
         mRewardAd.show(activity, new RewardAdStatusListener() {
             @Override
             public void onRewardAdClosed() {
+                Log.i(TAG, "Closed reward ad");
                 super.onRewardAdClosed();
                 mMainThreadHandler.post(new Runnable() {
                     @Override
@@ -88,6 +94,7 @@ public class RewardAdProxy {
 
             @Override
             public void onRewardAdFailedToShow(final int errorCode) {
+                Log.i(TAG, "Failed to show reward ad with error code " + errorCode);
                 super.onRewardAdFailedToShow(errorCode);
                 mMainThreadHandler.post(new Runnable() {
                     @Override
@@ -101,6 +108,7 @@ public class RewardAdProxy {
 
             @Override
             public void onRewardAdOpened() {
+                Log.i(TAG, "Opened reward ad");
                 super.onRewardAdOpened();
                 mMainThreadHandler.post(new Runnable() {
                     @Override
@@ -114,6 +122,7 @@ public class RewardAdProxy {
 
             @Override
             public void onRewarded(final Reward reward) {
+                Log.i(TAG, "Rewarded with " + reward.getName() + "; " + reward.getAmount());
                 super.onRewarded(reward);
                 mMainThreadHandler.post(new Runnable() {
                     @Override

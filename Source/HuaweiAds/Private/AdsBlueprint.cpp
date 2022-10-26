@@ -21,7 +21,7 @@ void UHuaweiAdsBlueprint::loadBannerAd(
 	const FOnBannerAdClicked &onBannerAdClicked,
 	const FOnBannerAdImpression &onBannerAdImpression)
 {
-	Ads::loadBannerAd(adId, ((uint8) position) - 1, UEnum::GetValueAsString(size));
+	Ads::loadBannerAd(adId, ((uint8) position) - 1, UEnum::GetValueAsString(size).Replace(TEXT("UBannerSize::"), TEXT("")));
 	UHuaweiAdsBlueprint::_onBannerAdClosed = onBannerAdClosed;
 	UHuaweiAdsBlueprint::_onBannerAdFailed = onBannerAdFailed;
 	UHuaweiAdsBlueprint::_onBannerAdLeftApp = onBannerAdLeftApp;

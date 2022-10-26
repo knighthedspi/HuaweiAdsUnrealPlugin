@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.FrameLayout;
+import android.util.Log;
 
 import com.huawei.hms.ads.AdListener;
 import com.huawei.hms.ads.AdParam;
@@ -44,6 +45,8 @@ public class BannerAdProxy extends AdListener {
 
     private int mCustomWidth = DEFAULT_WIDTH;
 
+    private static final String TAG = "BannerAdProxy";
+
     public BannerAdProxy(Activity activity, IAdStatusListener listener) {
         mActivity = activity;
         mAdListener = listener;
@@ -70,6 +73,8 @@ public class BannerAdProxy extends AdListener {
                 }
                 mBannerView.setAdId(mAdId);
                 mBannerView.setBannerAdSize(getTargetBannerAdSize(mAdSizeType));
+                Log.i(TAG, "Load ad with id " + mAdId + "; size: " + mBannerView.getBannerAdSize());    
+
                 if (BannerAdSize.BANNER_SIZE_INVALID.equals(mBannerView.getBannerAdSize())) {
                     return;
                 }
